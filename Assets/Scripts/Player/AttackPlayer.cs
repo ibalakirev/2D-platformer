@@ -9,7 +9,7 @@ public class AttackPlayer : MonoBehaviour
     [SerializeField] PlayerSoundAttackPlayer _sundAttack;
 
     private float _damage;
-    [SerializeField] private bool _isAttack = false;
+    private bool _isAttack = false;
 
     private void Start()
     {

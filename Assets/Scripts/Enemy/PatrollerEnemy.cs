@@ -1,72 +1,88 @@
 using System.Collections;
 using UnityEngine;
 
-[RequireComponent(typeof(Rigidbody2D))]
+[RequireComponent(typeof(MoverEnemy), typeof(EnemyVision))]
 
 public class PatrollerEnemy : MonoBehaviour
 {
-    [SerializeField] private float _timeToWait = 3f;
-    [SerializeField] private float _speedPatrolEnemy = 3f;
+    [SerializeField] private float _timeToWaitPatrol = 3f;
+    [SerializeField] private float _speedPatrolEnemy;
     [SerializeField] private Transform _leftPointPosition;
     [SerializeField] private Transform _rightPointPosition;
 
+    private MoverEnemy _moverEnemy;
+    private EnemyVision _enemyVision;
+    private float _waitTimePatrol;
     private bool _isFaicingRight = true;
-    private float _waitTime;
-    private Rigidbody2D _rigidbody;
+
+    public float SpeedPatrolEnemy => _speedPatrolEnemy;
+    public bool IsFaicingRight => _isFaicingRight;
+    public float TimeToWaitPatrol => _timeToWaitPatrol;
+    public float WaitTimePatrol => _waitTimePatrol;
 
     private void Start()
     {
-        _rigidbody = GetComponent<Rigidbody2D>();
+        _moverEnemy = GetComponent<MoverEnemy>();
 
-        StartCoroutine(WaitChangeDirection(_timeToWait));
+        _enemyVision = GetComponent<EnemyVision>(); 
 
-        _waitTime = _timeToWait;
+        StartCoroutine(WaitChangeDirection());
+
+        GetRestartWaitTimePatrol();
     }
 
-    private void FixedUpdate()
-    {
-        Move();
-    }
-
-    private void Move()
+    public void Patrol(Vector2 nextPoint, bool isFaicingRight)
     {
         float multiplySpeedEnemy = -1;
 
-        Vector2 nextPoint = Vector2.right * _speedPatrolEnemy * Time.fixedDeltaTime;
-
-        if (_isFaicingRight == false)
+        if (isFaicingRight == false)
         {
             nextPoint.x *= multiplySpeedEnemy;
         }
 
-        if (_waitTime == _timeToWait)
-        {
-            _rigidbody.MovePosition((Vector2)transform.position + nextPoint);
-        }
+        _moverEnemy.MovePositionEnemy(nextPoint);
     }
 
-    private IEnumerator WaitChangeDirection(float delay, int minTime = 0, int maxTime = 3)
+    public float GetRestartWaitTimePatrol()
+    {
+        _waitTimePatrol = _timeToWaitPatrol;
+
+        return _waitTimePatrol;
+    }
+
+    public void Flip()
+    {
+        float degreesRotationAxisX = 0f;
+        float degreesRotationAxisY = 180f;
+        float degreesRotationAxisZ = 0f;
+
+        _isFaicingRight = !_isFaicingRight;
+
+        transform.Rotate(degreesRotationAxisX, degreesRotationAxisY, degreesRotationAxisZ);
+    }
+
+    private IEnumerator WaitChangeDirection(float delay = 1f, int minTime = 0, int maxTime = 3)
     {
         bool isWorkCoroutine = true;
         float valueWaitTimeSubtraction = 1;
 
-        WaitForSeconds wait = new WaitForSeconds(1f);
+        WaitForSeconds wait = new WaitForSeconds(delay);
 
         while (isWorkCoroutine)
         {
-            if (GetPositionPointFinishDistance() == true && _waitTime > minTime)
+            if (GetPositionPointFinishDistance() == true && _waitTimePatrol > minTime && _enemyVision.IsPlayerSaw == false)
             {
                 for (int i = maxTime; i > minTime; i--)
                 {
-                    _waitTime -= valueWaitTimeSubtraction;
+                    _waitTimePatrol -= valueWaitTimeSubtraction;
 
                     yield return wait;
                 }
             }
 
-            if (_waitTime <= minTime)
+            if (_waitTimePatrol <= minTime)
             {
-                _waitTime = _timeToWait;
+                GetRestartWaitTimePatrol();
 
                 Flip();
             }
@@ -81,16 +97,5 @@ public class PatrollerEnemy : MonoBehaviour
         bool isOutLeftPoint = _isFaicingRight == false && transform.position.x <= _leftPointPosition.transform.position.x;
 
         return isOutRightPoint || isOutLeftPoint;
-    }
-
-    private void Flip()
-    {
-        float degreesRotationAxisX = 0f;
-        float degreesRotationAxisY = 180f;
-        float degreesRotationAxisZ = 0f;
-
-        _isFaicingRight = !_isFaicingRight;
-
-        transform.Rotate(degreesRotationAxisX, degreesRotationAxisY, degreesRotationAxisZ);
     }
 }

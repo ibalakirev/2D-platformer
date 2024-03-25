@@ -1,6 +1,6 @@
 using UnityEngine;
 
-public class PlayerSoundPlayer : MonoBehaviour
+public class PlayerSoundJumpPlayer : MonoBehaviour
 {
     [SerializeField] private AudioSource _audioSource;
     [SerializeField] private MovePlayer _movePlayer;

@@ -11,8 +11,6 @@ public class MovePlayer : MonoBehaviour
     [SerializeField] private float _speedWalk;
     [SerializeField] private float _powerJump;
     [SerializeField] private Animator _animator;
-    [SerializeField] private AudioSource _soundJump;
-    [SerializeField] private DisablerCoin _disablerCoin;
 
     private float _multiplySpeedWalk = 50f;
     private float _multiplyJump = 100f;
@@ -57,8 +55,6 @@ public class MovePlayer : MonoBehaviour
             SoundJumpStarted.Invoke();
 
             _rigidbody.AddForce(new Vector2(powerVectorX, _powerJump * _multiplyJump * Time.fixedDeltaTime));
-
-            _soundJump.Play();
 
             _isGround = false;
             _isJump = false;

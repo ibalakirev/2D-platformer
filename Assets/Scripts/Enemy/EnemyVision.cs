@@ -24,28 +24,19 @@ public class EnemyVision : MonoBehaviour
 
     private void Update()
     {
-        TrackVisibilityObjectStalking();
+        DefineStatusVisionEnemy();
     }
 
-    private void TrackVisibilityObjectStalking()
+    private void DefineStatusVisionEnemy()
     {
-        _originCirclePosition = transform.position;
+        RaycastHit2D visionEnemy = GetVisionEnmy();
 
-        if (_patrollerEnemy.IsFaicingRight == true)
-        {
-            _direction = Vector2.right;
-        }
-        else
-        {
-            _direction = Vector2.left;
-        }
+        DefineDirectionVisionEnemy();
 
-        RaycastHit2D hit = Physics2D.CircleCast(_originCirclePosition, _circleRadius, _direction, _maxDistance, _layerMask);
-
-        if (hit == true)
+        if (visionEnemy == true)
         {
-            _currentHitObject = hit.transform.gameObject;
-            _currentHitDistance = hit.distance;
+            _currentHitObject = visionEnemy.transform.gameObject;
+            _currentHitDistance = visionEnemy.distance;
 
             if (_currentHitObject.GetComponent<MovePlayer>())
             {
@@ -57,6 +48,27 @@ public class EnemyVision : MonoBehaviour
             _isPlayerSaw = false;
             _currentHitObject = null;
             _currentHitDistance = _maxDistance;
+        }
+    }
+
+    private RaycastHit2D GetVisionEnmy()
+    {
+        _originCirclePosition = transform.position;
+
+        RaycastHit2D hit = Physics2D.CircleCast(_originCirclePosition, _circleRadius, _direction, _maxDistance, _layerMask);
+
+        return hit;
+    }
+
+    private void DefineDirectionVisionEnemy()
+    {
+        if (_patrollerEnemy.IsFaicingRight == true)
+        {
+            _direction = Vector2.right;
+        }
+        else
+        {
+            _direction = Vector2.left;
         }
     }
 

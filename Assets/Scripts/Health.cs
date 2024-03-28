@@ -3,7 +3,7 @@ using UnityEngine;
 
 public class Health : MonoBehaviour
 {
-    [SerializeField, Range(0f, 100f)] private float _health;  
+    [SerializeField] private float _health;
 
     public float HealthCharacter => _health;
 
@@ -26,7 +26,19 @@ public class Health : MonoBehaviour
             gameObject.SetActive(false);
         }
 
+        LimitHealth();
+
         return true;
+    }
+
+    private void LimitHealth()
+    {
+        float minValueHealth = 0f;
+
+        if(_health <= minValueHealth)
+        {
+            _health = 0f;
+        }
     }
 }
 

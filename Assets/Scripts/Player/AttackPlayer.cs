@@ -6,10 +6,10 @@ public class AttackPlayer : MonoBehaviour
 
     [SerializeField] private Animator _animator;
     [SerializeField] private Inputer _inputer;
-    [SerializeField] PlayerSoundAttackPlayer _sundAttack;
+    [SerializeField] SoundPlayerAttack _soundAttack;
 
     private float _damage;
-    private bool _isAttack = false;
+    private bool _isAttack;
 
     private void Start()
     {
@@ -25,25 +25,24 @@ public class AttackPlayer : MonoBehaviour
         {
             _animator.SetTrigger(AttackWeapon);
 
-            _sundAttack.PlaySoundAttack();
+            _soundAttack.PlaySoundAttack();
 
             _isAttack = true;
+        }
+    }
+
+    private void OnTriggerEnter2D(Collider2D other)
+    {
+        if(other.TryGetComponent(out Health enemyHealth) && _isAttack == true)
+        {
+            enemyHealth.ReduceHealth(_damage);
+            enemyHealth.Die();
         }
     }
 
     public void FinishAttack()
     {
         _isAttack = false;
-    }
-
-    private void OnTriggerEnter2D(Collider2D other)
-    {
-        HealthEnemy healthEnemy = other.GetComponent<HealthEnemy>();
-
-        if (healthEnemy != null && _isAttack == true)
-        {
-            healthEnemy.ReduceHealth(_damage);
-        }
     }
 }
 

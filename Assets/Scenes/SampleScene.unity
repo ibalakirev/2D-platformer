@@ -504,6 +504,7 @@ GameObject:
   - component: {fileID: 125692706}
   - component: {fileID: 125692705}
   - component: {fileID: 125692707}
+  - component: {fileID: 125692708}
   m_Layer: 3
   m_Name: Player
   m_TagString: Player
@@ -625,11 +626,25 @@ MonoBehaviour:
   m_GameObject: {fileID: 125692699}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: cc21c6dd55d8eb04b90ffa41a70b03d5, type: 3}
+  m_Script: {fileID: 11500000, guid: 3fb4179ac7cd1ef448c494ecd95c38c3, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
   _health: 100
-  _soundTakeDamagePlayer: {fileID: 719664928}
+--- !u!114 &125692708
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 125692699}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: a75f1da96fcc7de4fb76b831d21f972d, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _medkit: {fileID: -3208576998357909024, guid: 4c8e8318f9d630b4983f6640d84a2157, type: 3}
+  _coin: {fileID: 1344257621972843579, guid: 010a6f47c8d6fb948b2817bca16fffd6, type: 3}
+  _soundTakeDamage: {fileID: 719664928}
 --- !u!1 &167201353
 GameObject:
   m_ObjectHideFlags: 0
@@ -914,7 +929,7 @@ Transform:
   m_GameObject: {fileID: 488184973}
   serializedVersion: 2
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 0.85, y: -0.84, z: 0}
+  m_LocalPosition: {x: 0.82, y: -0.98, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -1918,7 +1933,6 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 1362566815}
-  - component: {fileID: 1362566814}
   - component: {fileID: 1362566813}
   m_Layer: 0
   m_Name: SoundCoin
@@ -2023,19 +2037,6 @@ AudioSource:
     m_PreInfinity: 2
     m_PostInfinity: 2
     m_RotationOrder: 4
---- !u!114 &1362566814
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1362566812}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: bc9d90b3c73d90f4c874b9a5c5318e64, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  _audioSourse: {fileID: 1362566813}
 --- !u!4 &1362566815
 Transform:
   m_ObjectHideFlags: 0
@@ -2145,6 +2146,10 @@ PrefabInstance:
       objectReference: {fileID: 125692705}
     - target: {fileID: 8276466867478140711, guid: 6d93543fc0049ef4eb52a229debd5466, type: 3}
       propertyPath: _sundAttack
+      value: 
+      objectReference: {fileID: 50790155}
+    - target: {fileID: 8276466867478140711, guid: 6d93543fc0049ef4eb52a229debd5466, type: 3}
+      propertyPath: _soundAttack
       value: 
       objectReference: {fileID: 50790155}
     m_RemovedComponents: []
@@ -18817,7 +18822,7 @@ GameObject:
   m_Component:
   - component: {fileID: 1580491706}
   m_Layer: 0
-  m_Name: SpawnCoins
+  m_Name: SpawnPointsCoins
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -18876,7 +18881,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 0091346c80310314780b746d4deec281, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _spawnPoints:
+  SpawnPoints:
   - {fileID: 488184974}
   - {fileID: 1778321764}
   - {fileID: 981185924}
@@ -18886,7 +18891,8 @@ MonoBehaviour:
   - {fileID: 1559834492}
   - {fileID: 956348726}
   - {fileID: 760507797}
-  _prefabCoin: {fileID: 1344257621972843579, guid: 010a6f47c8d6fb948b2817bca16fffd6, type: 3}
+  Sound: {fileID: 1362566813}
+  _coin: {fileID: 1344257621972843579, guid: 010a6f47c8d6fb948b2817bca16fffd6, type: 3}
 --- !u!4 &1615695166
 Transform:
   m_ObjectHideFlags: 0
@@ -18953,7 +18959,6 @@ GameObject:
   m_Component:
   - component: {fileID: 1742662525}
   - component: {fileID: 1742662527}
-  - component: {fileID: 1742662526}
   m_Layer: 0
   m_Name: SoundMedkit
   m_TagString: Untagged
@@ -18976,19 +18981,6 @@ Transform:
   m_Children: []
   m_Father: {fileID: 1384118704}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!114 &1742662526
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1742662524}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: cdc9d19e0bc29244e8961d64e5bf3c78, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  _soundMedkit: {fileID: 1742662527}
 --- !u!82 &1742662527
 AudioSource:
   m_ObjectHideFlags: 0
@@ -19125,7 +19117,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 1803130878}
-  - component: {fileID: 1803130877}
+  - component: {fileID: 1803130879}
   m_Layer: 0
   m_Name: SpawnerMedkits
   m_TagString: Untagged
@@ -19133,23 +19125,6 @@ GameObject:
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
   m_IsActive: 1
---- !u!114 &1803130877
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1803130876}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: afe3e27802549194faa390c9e45db0bb, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  _spawnPoints:
-  - {fileID: 810518314}
-  - {fileID: 460414595}
-  - {fileID: 1662845938}
-  _prefabMedkit: {fileID: -6708171073213960802, guid: 4c8e8318f9d630b4983f6640d84a2157, type: 3}
 --- !u!4 &1803130878
 Transform:
   m_ObjectHideFlags: 0
@@ -19165,6 +19140,24 @@ Transform:
   m_Children: []
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &1803130879
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1803130876}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 8ca19d67df1697a4cb01246be5f420ae, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  SpawnPoints:
+  - {fileID: 810518314}
+  - {fileID: 460414595}
+  - {fileID: 1662845938}
+  Sound: {fileID: 1742662527}
+  _medkit: {fileID: -3208576998357909024, guid: 4c8e8318f9d630b4983f6640d84a2157, type: 3}
 --- !u!4 &1826026365 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 1873030402443433276, guid: 7791355459fe35e49936b5973aeb8a30, type: 3}
@@ -19611,7 +19604,7 @@ GameObject:
   m_Component:
   - component: {fileID: 2037666616}
   m_Layer: 0
-  m_Name: SpawnMedkits
+  m_Name: SpawnPointsMedkits
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -19932,8 +19925,8 @@ SceneRoots:
   - {fileID: 459272958}
   - {fileID: 125692700}
   - {fileID: 1615695166}
-  - {fileID: 1803130878}
   - {fileID: 1580491706}
+  - {fileID: 1803130878}
   - {fileID: 2037666616}
   - {fileID: 1387741015}
   - {fileID: 1032100849}

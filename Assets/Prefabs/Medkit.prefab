@@ -11,10 +11,9 @@ GameObject:
   - component: {fileID: 5066404978450160291}
   - component: {fileID: 8005584665569272603}
   - component: {fileID: 1933861431530957462}
-  - component: {fileID: -6708171073213960802}
-  - component: {fileID: 8856639192272642826}
-  m_Layer: 0
-  m_Name: Medkit 1
+  - component: {fileID: -3208576998357909024}
+  m_Layer: 7
+  m_Name: Medkit
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -116,7 +115,7 @@ BoxCollider2D:
   m_CallbackLayers:
     serializedVersion: 2
     m_Bits: 4294967295
-  m_IsTrigger: 1
+  m_IsTrigger: 0
   m_UsedByEffector: 0
   m_UsedByComposite: 0
   m_Offset: {x: 0, y: 0}
@@ -132,7 +131,7 @@ BoxCollider2D:
   serializedVersion: 2
   m_Size: {x: 5.12, y: 5.12}
   m_EdgeRadius: 0
---- !u!114 &-6708171073213960802
+--- !u!114 &-3208576998357909024
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -142,17 +141,5 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 461f15757025f454ebf8652307c450fa, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
---- !u!114 &8856639192272642826
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 309053094354851050}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 24b1a839d8d9cea4ba768d9550aa6b3c, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 

@@ -16,25 +16,21 @@ public class AttackEnemy : MonoBehaviour
 
     private void OnCollisionEnter2D(Collision2D other)
     {
-        HealthPlayer healthPlayer = other.gameObject.GetComponent<HealthPlayer>();
-
-        if (healthPlayer == true)
+        if (other.gameObject.TryGetComponent(out Health player))
         {
-            _coroutine = StartCoroutine(WaitAttack(healthPlayer));
+            _coroutine = StartCoroutine(WaitAttack(player));
         }
     }
 
     private void OnCollisionExit2D(Collision2D other)
     {
-        HealthPlayer healthPlayer = other.gameObject.GetComponent<HealthPlayer>();
-
-        if (healthPlayer == true)
+        if (other.gameObject.TryGetComponent(out Health player))
         {
             StopCoroutine(_coroutine);
         }
     }
 
-    private IEnumerator WaitAttack(HealthPlayer healthPlayer)
+    private IEnumerator WaitAttack(Health player)
     {
         bool isWorkCoroutine = true;
         float delay = 2f;
@@ -43,7 +39,8 @@ public class AttackEnemy : MonoBehaviour
 
         while (isWorkCoroutine)
         {
-            healthPlayer.ReduceHealth(_damage);
+            player.ReduceHealth(_damage);
+            player.Die();
 
             yield return wait;
         }

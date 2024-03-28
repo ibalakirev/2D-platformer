@@ -1,23 +1,18 @@
-using System.Collections.Generic;
 using UnityEngine;
 
-public class SpawnerCoins : MonoBehaviour
+public class SpawnerCoins : Spawner
 {
-    [SerializeField] private List<Transform> _spawnPoints;
-    [SerializeField] private DisablerCoin _prefabCoin;
+    [SerializeField] private Coin _coin;
 
     private void Start()
     {
-        CreateCoins();
+        CreatePrefabs();
     }
 
-    private void CreateCoins()
+    public override void CreatePrefab(int index)
     {
-        int indexPoints = 0;
+        Coin coin = Instantiate(_coin, SpawnPoints[index]);
 
-        for (int i = indexPoints; i < _spawnPoints.Count; i++)
-        {
-            Instantiate(_prefabCoin, _spawnPoints[i]);
-        }
+        coin.AcceptSound(Sound);
     }
 }

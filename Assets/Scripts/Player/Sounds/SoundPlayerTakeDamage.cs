@@ -25,11 +25,10 @@ public class SoundPlayerTakeDamage : MonoBehaviour
     private IEnumerator WaitaPlaySoundTakeDamage()
     {
         float delay = 2f;
-        bool isWorkCoroutine = true;
 
         WaitForSeconds wait = new WaitForSeconds(delay);
 
-        while (isWorkCoroutine)
+        while (enabled)
         {
             PlaySoundTakeDamage();
 

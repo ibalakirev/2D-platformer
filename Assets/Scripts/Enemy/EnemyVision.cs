@@ -16,6 +16,7 @@ public class EnemyVision : MonoBehaviour
     private bool _isPlayerSaw;
 
     public bool IsPlayerSaw => _isPlayerSaw;
+    public GameObject CurrentHitObject => _currentHitObject;
 
     private void Start()
     {
@@ -38,7 +39,7 @@ public class EnemyVision : MonoBehaviour
             _currentHitObject = visionEnemy.transform.gameObject;
             _currentHitDistance = visionEnemy.distance;
 
-            if (_currentHitObject.GetComponent<MovePlayer>())
+            if (_currentHitObject.GetComponent<MoverPlayer>())
             {
                 _isPlayerSaw = true;
             }

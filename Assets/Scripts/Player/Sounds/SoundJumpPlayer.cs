@@ -3,7 +3,7 @@ using UnityEngine;
 public class SoundJumpPlayer : MonoBehaviour
 {
     [SerializeField] private AudioSource _audioSource;
-    [SerializeField] private MovePlayer _movePlayer;
+    [SerializeField] private MoverPlayer _movePlayer;
 
     private void OnEnable()
     {

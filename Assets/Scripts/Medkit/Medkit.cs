@@ -1,18 +1,8 @@
 using UnityEngine;
 
-public class Medkit : Prefab
+public class Medkit : InteractorObjectWithPlayer
 {
-    private float _healthEffect = 20f;
+    private float _healthEffect = 50f;
 
     public float HealthEffect => _healthEffect;
-
-    public override void Destroy()
-    {
-        base.Destroy();
-    }
-
-    public override void AcceptSound(AudioSource sound)
-    {
-        base.AcceptSound(sound);
-    }
 }

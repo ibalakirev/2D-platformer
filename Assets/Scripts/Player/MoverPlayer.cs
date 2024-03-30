@@ -3,7 +3,7 @@ using UnityEngine;
 
 [RequireComponent(typeof(Rigidbody2D), typeof(Inputer))]
 
-public class MovePlayer : MonoBehaviour
+public class MoverPlayer : MonoBehaviour
 {
     private const string Ground = nameof(Ground);
     private const string SpeedX = nameof(SpeedX);
@@ -43,6 +43,14 @@ public class MovePlayer : MonoBehaviour
         if (_inputer.GetJump() == true && _isGround == true)
         {
             _isJump = true;
+        }
+    }
+
+    private void OnCollisionEnter2D(Collision2D other)
+    {
+        if (other.gameObject.CompareTag(Ground))
+        {
+            _isGround = true;
         }
     }
 
@@ -94,13 +102,5 @@ public class MovePlayer : MonoBehaviour
         _isFaicingRight = !_isFaicingRight;
 
         transform.Rotate(degreesRotationAxisX, degreesRotationAxisY, degreesRotationAxisZ);
-    }
-
-    private void OnCollisionEnter2D(Collision2D other)
-    {
-        if (other.gameObject.CompareTag(Ground))
-        {
-            _isGround = true;
-        }
     }
 }

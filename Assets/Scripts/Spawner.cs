@@ -6,6 +6,11 @@ public abstract class Spawner : MonoBehaviour
     [SerializeField] protected List<Transform> SpawnPoints;
     [SerializeField] protected AudioSource Sound;
 
+    private void Start()
+    {
+        CreatePrefabs();
+    }
+
     public void CreatePrefabs()
     {
         int indexPoints = 0;

@@ -1,4 +1,3 @@
-using System;
 using UnityEngine;
 
 public class Health : MonoBehaviour
@@ -7,17 +6,23 @@ public class Health : MonoBehaviour
 
     public float HealthCharacter => _health;
 
-    public void ReduceHealth (float damage)
+    public void ReduceHealth(float damage)
     {
         _health -= damage;
+
+        LimitHealth();
+
+        Die();
     }
 
     public void IncreaseHealth(float healthMedkit)
     {
         _health += healthMedkit;
+
+        LimitHealth();
     }
 
-    public bool Die()
+    private void Die()
     {
         float minValueHealth = 0f;
 
@@ -25,20 +30,14 @@ public class Health : MonoBehaviour
         {
             gameObject.SetActive(false);
         }
-
-        LimitHealth();
-
-        return true;
     }
 
     private void LimitHealth()
     {
         float minValueHealth = 0f;
+        float maxValueHealth = 100f;
 
-        if(_health <= minValueHealth)
-        {
-            _health = 0f;
-        }
+        _health = Mathf.Clamp(_health, minValueHealth, maxValueHealth);
     }
 }
 

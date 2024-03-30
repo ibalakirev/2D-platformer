@@ -19,7 +19,7 @@ public class CollisionHandler : MonoBehaviour
     {
         if(other.gameObject.TryGetComponent(out Medkit medkit))
         {
-            _health.IncreaseHealth(_medkit.HealthEffect);
+            _health.IncreaseHealth(medkit.HealthEffect);
 
             medkit.Destroy();
         }

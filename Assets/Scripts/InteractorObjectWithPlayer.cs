@@ -1,19 +1,20 @@
 using UnityEngine;
 
-public class Prefab : MonoBehaviour
+public class InteractorObjectWithPlayer : MonoBehaviour
 {
     protected AudioSource Sound;
 
-    public virtual void Destroy()
+    public void Destroy()
     {
         Destroy(gameObject);
         PlaySound();
     }
 
-    public virtual void AcceptSound(AudioSource sound)
+    public void SetSound(AudioSource sound)
     {
         Sound = sound;
     }
+
     private void PlaySound()
     {
         Sound.Play();

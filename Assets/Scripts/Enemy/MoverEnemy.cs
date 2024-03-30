@@ -23,25 +23,25 @@ public class MoverEnemy : MonoBehaviour
         Move();
     }
 
-    public void MovePositionEnemy(Vector2 nextPoint)
+    public void MovePositionEnemy(Vector2 offset)
     {
-        _rigidbody.MovePosition((Vector2)transform.position + nextPoint);
+        _rigidbody.MovePosition((Vector2)transform.position + offset);
     }
 
     private void Move()
     {
-        Vector2 nextPoint = Vector2.right * _patrollerEnemy.SpeedPatrolEnemy * Time.fixedDeltaTime;
+        Vector2 offset = Vector2.right * _patrollerEnemy.SpeedPatrolEnemy * Time.fixedDeltaTime;
 
         if (_enemyVision.IsPlayerSaw == true)
         {
             _patrollerEnemy.GetRestartWaitTimePatrol();
 
-            _stalkerEnemy.ChasePlayer(nextPoint, _patrollerEnemy.IsFaicingRight);
+            _stalkerEnemy.ChasePlayer(offset);
         }
 
         if (_enemyVision.IsPlayerSaw == false && _patrollerEnemy.WaitTimePatrol == _patrollerEnemy.TimeToWaitPatrol)
         {
-            _patrollerEnemy.Patrol(nextPoint, _patrollerEnemy.IsFaicingRight);
+            _patrollerEnemy.Patrol(offset);
         }
     }
 }

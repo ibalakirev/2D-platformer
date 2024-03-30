@@ -32,15 +32,13 @@ public class AttackEnemy : MonoBehaviour
 
     private IEnumerator WaitAttack(Health player)
     {
-        bool isWorkCoroutine = true;
         float delay = 2f;
 
         WaitForSeconds wait = new WaitForSeconds(delay);
 
-        while (isWorkCoroutine)
+        while (enabled)
         {
             player.ReduceHealth(_damage);
-            player.Die();
 
             yield return wait;
         }

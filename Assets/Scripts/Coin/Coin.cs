@@ -1,14 +1,6 @@
 using UnityEngine;
 
-public class Coin : Prefab
+public class Coin : InteractorObjectWithPlayer
 {
-    public override void Destroy()
-    {
-        base.Destroy();
-    }
 
-    public override void AcceptSound(AudioSource sound)
-    {
-        base.AcceptSound(sound);
-    }
 }

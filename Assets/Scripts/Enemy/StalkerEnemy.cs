@@ -1,43 +1,45 @@
 
 using UnityEngine;
 
-[RequireComponent(typeof(PatrollerEnemy), typeof(MoverEnemy))]
+[RequireComponent(typeof(PatrollerEnemy), typeof(MoverEnemy), typeof(EnemyVision))]
 
 public class StalkerEnemy : MonoBehaviour
 {
     private PatrollerEnemy _patrollerEnemy;
     private MoverEnemy _moverEnemy;
-    private MovePlayer _movePlayer;
+    private EnemyVision _enemyVision;
 
     private void Start()
     {
         _patrollerEnemy = GetComponent<PatrollerEnemy>();
         _moverEnemy = GetComponentInParent<MoverEnemy>();
-        _movePlayer = FindObjectOfType<MovePlayer>();   
+        _enemyVision = GetComponentInParent<EnemyVision>(); 
     }
 
-    public void ChasePlayer(Vector2 nextPoint, bool isFaicingRight)
+    public void ChasePlayer(Vector2 offset )
     {
         float nullValueDistance = 0;
         float valueLeftDirection = -1;
         float minValueDistance = 0.2f;
-        float distance = _movePlayer.transform.position.x - transform.position.x;
+        float distance = 0;
+
+        if(_enemyVision.IsPlayerSaw == true)
+        {
+            distance = _enemyVision.CurrentHitObject.transform.position.x - transform.position.x;
+        }
 
         if (distance < nullValueDistance)
         {
-            nextPoint *= valueLeftDirection;
+            offset *= valueLeftDirection;
         }
 
-        if (GetStatusDirectionEnemy(distance, minValueDistance, isFaicingRight == false))
-        {
-            _patrollerEnemy.Flip();
-        }
-        else if (GetStatusDirectionEnemy(minValueDistance, distance, isFaicingRight == true))
+        if (GetStatusDirectionEnemy(distance, minValueDistance, _patrollerEnemy.IsFaicingRight == false ||
+            GetStatusDirectionEnemy(minValueDistance, distance, _patrollerEnemy.IsFaicingRight == true)))
         {
             _patrollerEnemy.Flip();
         }
 
-        _moverEnemy.MovePositionEnemy(nextPoint);
+        _moverEnemy.MovePositionEnemy(offset);
     }
 
     private bool GetStatusDirectionEnemy(float firstValueDistance, float secondValueDistance, bool isFaicingRight)

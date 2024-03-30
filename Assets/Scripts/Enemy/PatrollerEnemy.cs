@@ -31,23 +31,21 @@ public class PatrollerEnemy : MonoBehaviour
         GetRestartWaitTimePatrol();
     }
 
-    public void Patrol(Vector2 nextPoint, bool isFaicingRight)
+    public void Patrol(Vector2 offset)
     {
         float multiplySpeedEnemy = -1;
 
-        if (isFaicingRight == false)
+        if (_isFaicingRight == false)
         {
-            nextPoint.x *= multiplySpeedEnemy;
+            offset.x *= multiplySpeedEnemy;
         }
 
-        _moverEnemy.MovePositionEnemy(nextPoint);
+        _moverEnemy.MovePositionEnemy(offset);
     }
 
-    public float GetRestartWaitTimePatrol()
+    public void GetRestartWaitTimePatrol()
     {
         _waitTimePatrol = _timeToWaitPatrol;
-
-        return _waitTimePatrol;
     }
 
     public void Flip()

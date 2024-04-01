@@ -28,6 +28,15 @@ public class EnemyVision : MonoBehaviour
         DefineStatusVisionEnemy();
     }
 
+    public RaycastHit2D GetVisionEnmy()
+    {
+        _originCirclePosition = transform.position;
+
+        RaycastHit2D hit = Physics2D.CircleCast(_originCirclePosition, _circleRadius, _direction, _maxDistance, _layerMask);
+
+        return hit;
+    }
+
     private void DefineStatusVisionEnemy()
     {
         RaycastHit2D visionEnemy = GetVisionEnmy();
@@ -50,15 +59,6 @@ public class EnemyVision : MonoBehaviour
             _currentHitObject = null;
             _currentHitDistance = _maxDistance;
         }
-    }
-
-    private RaycastHit2D GetVisionEnmy()
-    {
-        _originCirclePosition = transform.position;
-
-        RaycastHit2D hit = Physics2D.CircleCast(_originCirclePosition, _circleRadius, _direction, _maxDistance, _layerMask);
-
-        return hit;
     }
 
     private void DefineDirectionVisionEnemy()

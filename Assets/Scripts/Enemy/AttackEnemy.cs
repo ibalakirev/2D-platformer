@@ -8,8 +8,8 @@ public class AttackEnemy : MonoBehaviour
 
     private void Start()
     {
-        float minDamage = 20f;
-        float maxDamage = 50f;
+        float minDamage = 5f;
+        float maxDamage = 10f;
 
         _damage = Random.Range(minDamage, maxDamage);
     }

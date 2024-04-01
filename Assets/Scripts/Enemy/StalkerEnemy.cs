@@ -13,28 +13,28 @@ public class StalkerEnemy : MonoBehaviour
     {
         _patrollerEnemy = GetComponent<PatrollerEnemy>();
         _moverEnemy = GetComponentInParent<MoverEnemy>();
-        _enemyVision = GetComponentInParent<EnemyVision>(); 
+        _enemyVision = GetComponentInParent<EnemyVision>();
     }
 
-    public void ChasePlayer(Vector2 offset )
+    public void ChasePlayer(Vector2 offset)
     {
         float nullValueDistance = 0;
         float valueLeftDirection = -1;
         float minValueDistance = 0.2f;
-        float distance = 0;
 
-        if(_enemyVision.IsPlayerSaw == true)
-        {
-            distance = _enemyVision.CurrentHitObject.transform.position.x - transform.position.x;
-        }
+        float distance = _enemyVision.CurrentHitObject.transform.position.x - transform.position.x;
 
         if (distance < nullValueDistance)
         {
             offset *= valueLeftDirection;
         }
 
-        if (GetStatusDirectionEnemy(distance, minValueDistance, _patrollerEnemy.IsFaicingRight == false ||
-            GetStatusDirectionEnemy(minValueDistance, distance, _patrollerEnemy.IsFaicingRight == true)))
+        if (GetStatusDirectionEnemy(distance, minValueDistance, _patrollerEnemy.IsFaicingRight == false))
+        {
+            _patrollerEnemy.Flip();
+        }
+
+        if(GetStatusDirectionEnemy(minValueDistance, distance, _patrollerEnemy.IsFaicingRight == true))
         {
             _patrollerEnemy.Flip();
         }

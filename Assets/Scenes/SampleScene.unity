@@ -1719,10 +1719,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 8fd01ba6bc5197640b11c702199e18d4, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _timeToWaitPatrol: 3
   _speedPatrolEnemy: 4
-  _leftPointPosition: {fileID: 1833502777}
-  _rightPointPosition: {fileID: 355649305}
+  _patrolPoints:
+  - {fileID: 355649305}
+  - {fileID: 1833502777}
 --- !u!114 &1020375173
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -19622,10 +19622,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 8fd01ba6bc5197640b11c702199e18d4, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _timeToWaitPatrol: 3
   _speedPatrolEnemy: 4
-  _leftPointPosition: {fileID: 850304374}
-  _rightPointPosition: {fileID: 2079195875}
+  _patrolPoints:
+  - {fileID: 2079195875}
+  - {fileID: 850304374}
 --- !u!114 &1992727377
 MonoBehaviour:
   m_ObjectHideFlags: 0

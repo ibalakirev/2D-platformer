@@ -11,17 +11,14 @@ public class Inputer : MonoBehaviour
     private void Update()
     {
         _horizontalAxis = Input.GetAxis(Horizontal);
-
-        GetJump();
-        GetAttack();
     }
 
-    public bool GetJump()
+    public bool GetInputJump()
     {
         return Input.GetKeyDown(KeyCode.Space);
     }
 
-    public bool GetAttack()
+    public bool GetInputAttack()
     {
         return Input.GetMouseButtonDown(0);
     }

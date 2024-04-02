@@ -29,12 +29,8 @@ public class StalkerEnemy : MonoBehaviour
             offset *= valueLeftDirection;
         }
 
-        if (GetStatusDirectionEnemy(distance, minValueDistance, _patrollerEnemy.IsFaicingRight == false))
-        {
-            _patrollerEnemy.Flip();
-        }
-
-        if(GetStatusDirectionEnemy(minValueDistance, distance, _patrollerEnemy.IsFaicingRight == true))
+        if (GetStatusDirectionEnemy(distance, minValueDistance, _patrollerEnemy.IsFaicingRight == false) ||
+            GetStatusDirectionEnemy(minValueDistance, distance, _patrollerEnemy.IsFaicingRight == true))
         {
             _patrollerEnemy.Flip();
         }

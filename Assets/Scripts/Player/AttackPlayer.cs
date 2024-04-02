@@ -21,7 +21,7 @@ public class AttackPlayer : MonoBehaviour
 
     private void Update()
     {
-        if (_inputer.GetAttack() == true)
+        if (_inputer.GetInputAttack() == true)
         {
             _animator.SetTrigger(AttackWeapon);
 

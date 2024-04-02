@@ -1,6 +1,6 @@
 using UnityEngine;
 
-public class Coin : InteractorObjectWithPlayer
+public class Coin : TakeableItem
 {
 
 }

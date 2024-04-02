@@ -14,7 +14,7 @@ public class SoundPlayerTakeDamage : MonoBehaviour
 
     public void StopPlaySoundTakeDamage()
     {
-        StopCoroutine(_coroutine);
+        StopCoroutine(_coroutine);  
     }
 
     private void PlaySoundTakeDamage()

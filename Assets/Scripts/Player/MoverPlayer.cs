@@ -40,7 +40,7 @@ public class MoverPlayer : MonoBehaviour
     {
         _animator.SetFloat(SpeedX, Mathf.Abs(_inputer.HorizontalAxis));
 
-        if (_inputer.GetJump() == true && _isGround == true)
+        if (_inputer.GetInputJump() == true && _isGround == true)
         {
             _isJump = true;
         }
@@ -78,11 +78,8 @@ public class MoverPlayer : MonoBehaviour
     {
         float directionAxis = 0;
 
-        if (GetConditionsForFlip(_inputer.HorizontalAxis, directionAxis, _isFaicingRight == false))
-        {
-            RotatePlayer();
-        }
-        else if (GetConditionsForFlip(directionAxis, _inputer.HorizontalAxis, _isFaicingRight == true))
+        if (GetConditionsForFlip(_inputer.HorizontalAxis, directionAxis, _isFaicingRight == false) ||
+            GetConditionsForFlip(directionAxis, _inputer.HorizontalAxis, _isFaicingRight == true))
         {
             RotatePlayer();
         }

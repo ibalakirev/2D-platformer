@@ -8,21 +8,27 @@ public class Health : MonoBehaviour
 
     public void ReduceHealth(float damage)
     {
-        _health -= damage;
+        if (IsAlive() == true)
+        {
+            _health -= damage;
 
-        LimitHealth();
+            LimitHealth();
 
-        Die();
+            TryDie();
+        }
     }
 
     public void IncreaseHealth(float healthMedkit)
     {
-        _health += healthMedkit;
+        if (IsAlive() == true)
+        {
+            _health += healthMedkit;
 
-        LimitHealth();
+            LimitHealth();
+        }
     }
 
-    private void Die()
+    private void TryDie()
     {
         float minValueHealth = 0f;
 
@@ -38,6 +44,20 @@ public class Health : MonoBehaviour
         float maxValueHealth = 100f;
 
         _health = Mathf.Clamp(_health, minValueHealth, maxValueHealth);
+    }
+
+    private bool IsAlive()
+    {
+        float minValueHealth = 0f;
+
+        if (_health > minValueHealth)
+        {
+            return true;
+        }
+        else
+        {
+            return false;
+        }
     }
 }
 

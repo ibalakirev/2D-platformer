@@ -32,14 +32,12 @@ public class MoverEnemy : MonoBehaviour
     {
         Vector2 offset = Vector2.right * _patrollerEnemy.SpeedPatrolEnemy * Time.fixedDeltaTime;
 
-        if (_enemyVision.IsPlayerSaw == true)
+        if (_enemyVision.IsSaw == true)
         {
-            _patrollerEnemy.GetRestartWaitTimePatrol();
-
             _stalkerEnemy.ChasePlayer(offset);
         }
 
-        if (_enemyVision.IsPlayerSaw == false && _patrollerEnemy.WaitTimePatrol == _patrollerEnemy.TimeToWaitPatrol)
+        if (_enemyVision.IsSaw == false)
         {
             _patrollerEnemy.Patrol(offset);
         }

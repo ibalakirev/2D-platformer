@@ -13,9 +13,9 @@ public class EnemyVision : MonoBehaviour
     private Vector2 _originCirclePosition;
     private Vector2 _direction;
     private float _currentHitDistance;
-    private bool _isPlayerSaw;
+    private bool _isEnemySaw;
 
-    public bool IsPlayerSaw => _isPlayerSaw;
+    public bool IsSaw => _isEnemySaw;
     public GameObject CurrentHitObject => _currentHitObject;
 
     private void Start()
@@ -26,6 +26,13 @@ public class EnemyVision : MonoBehaviour
     private void Update()
     {
         DefineStatusVisionEnemy();
+    }
+
+    private void OnDrawGizmos()
+    {
+        Gizmos.color = Color.red;
+        Gizmos.DrawLine(_originCirclePosition, _originCirclePosition + _direction * _currentHitDistance);
+        Gizmos.DrawWireSphere(_originCirclePosition + _direction * _currentHitDistance, _circleRadius);
     }
 
     public RaycastHit2D GetVisionEnmy()
@@ -50,12 +57,12 @@ public class EnemyVision : MonoBehaviour
 
             if (_currentHitObject.GetComponent<MoverPlayer>())
             {
-                _isPlayerSaw = true;
+                _isEnemySaw = true;
             }
         }
         else
         {
-            _isPlayerSaw = false;
+            _isEnemySaw = false;
             _currentHitObject = null;
             _currentHitDistance = _maxDistance;
         }
@@ -72,12 +79,4 @@ public class EnemyVision : MonoBehaviour
             _direction = Vector2.left;
         }
     }
-
-    private void OnDrawGizmos()
-    {
-        Gizmos.color = Color.red;
-        Gizmos.DrawLine(_originCirclePosition, _originCirclePosition + _direction * _currentHitDistance);
-        Gizmos.DrawWireSphere(_originCirclePosition + _direction * _currentHitDistance, _circleRadius);
-    }
-
 }

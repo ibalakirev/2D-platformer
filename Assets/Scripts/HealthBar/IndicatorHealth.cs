@@ -2,7 +2,7 @@ using UnityEngine;
 using UnityEngine.UI;
 using System.Collections;
 
-public abstract class IndicatorHealth : MonoBehaviour
+public class IndicatorHealth : MonoBehaviour
 {
     [SerializeField] private Health _character;
     [SerializeField] private Slider _slider;

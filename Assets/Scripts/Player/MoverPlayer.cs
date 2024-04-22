@@ -99,6 +99,6 @@ public class MoverPlayer : MonoBehaviour
 
         _isFaicingRight = !_isFaicingRight;
 
-        _playerModel.transform.Rotate(degreesRotationAxisX, degreesRotationAxisY, degreesRotationAxisZ);
+        _playerModel.Rotate(degreesRotationAxisX, degreesRotationAxisY, degreesRotationAxisZ);
     }
 }

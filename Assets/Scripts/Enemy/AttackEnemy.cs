@@ -1,18 +1,9 @@
 using System.Collections;
 using UnityEngine;
 
-public class AttackEnemy : MonoBehaviour
+public class AttackEnemy : Attacker
 {
-    private float _damage;
     private Coroutine _coroutine;
-
-    private void Start()
-    {
-        float minDamage = 5f;
-        float maxDamage = 10f;
-
-        _damage = Random.Range(minDamage, maxDamage);
-    }
 
     private void OnCollisionEnter2D(Collision2D other)
     {
@@ -39,13 +30,13 @@ public class AttackEnemy : MonoBehaviour
     {
         float delay = 2f;
 
-        WaitForSeconds wait = new WaitForSeconds(delay);
+        WaitForSeconds timeWait = new WaitForSeconds(delay);
 
-        while (enabled)
+        while (gameObject.activeSelf)
         {
-            player.ReduceCurrentValue(_damage);
+            player.ReduceCurrentValue(Damage);
 
-            yield return wait;
+            yield return timeWait;
         }
     }
 }

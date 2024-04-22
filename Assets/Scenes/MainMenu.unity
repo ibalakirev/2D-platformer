@@ -393,7 +393,6 @@ GameObject:
   - component: {fileID: 510803249}
   - component: {fileID: 510803248}
   - component: {fileID: 510803247}
-  - component: {fileID: 510803246}
   m_Layer: 5
   m_Name: CanvasAuthorInfo
   m_TagString: Untagged
@@ -401,19 +400,6 @@ GameObject:
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
   m_IsActive: 0
---- !u!114 &510803246
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 510803245}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 8f274d7097aff5c47868ab23a9ac3453, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  _canvasMenu: {fileID: 1007686595}
 --- !u!114 &510803247
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -915,8 +901,8 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 1007686596}
-        m_TargetAssemblyTypeName: OpenerInfoAuthor, Assembly-CSharp
+      - m_Target: {fileID: 1007686604}
+        m_TargetAssemblyTypeName: SwitcherInfoAuthor, Assembly-CSharp
         m_MethodName: OpenInfoAuthor
         m_Mode: 1
         m_Arguments:
@@ -1288,8 +1274,8 @@ GameObject:
   - component: {fileID: 1007686600}
   - component: {fileID: 1007686599}
   - component: {fileID: 1007686597}
-  - component: {fileID: 1007686596}
   - component: {fileID: 1007686603}
+  - component: {fileID: 1007686604}
   m_Layer: 5
   m_Name: CanvasMainMenu
   m_TagString: Untagged
@@ -1297,19 +1283,6 @@ GameObject:
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
   m_IsActive: 1
---- !u!114 &1007686596
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1007686595}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: a4e41b14651c9694a9546783edd80caf, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  _infoAuthor: {fileID: 510803245}
 --- !u!114 &1007686597
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1417,6 +1390,20 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 57cef3c09b0f4fd49beec76e53510f52, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+--- !u!114 &1007686604
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1007686595}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 653fe16af335fd34d85608aec4537fe2, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _infoAuthor: {fileID: 510803245}
+  _canvasMenu: {fileID: 1007686595}
 --- !u!1 &1335393681
 GameObject:
   m_ObjectHideFlags: 0
@@ -1667,8 +1654,8 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 510803246}
-        m_TargetAssemblyTypeName: ClosureInfoAuthor, Assembly-CSharp
+      - m_Target: {fileID: 1007686604}
+        m_TargetAssemblyTypeName: SwitcherInfoAuthor, Assembly-CSharp
         m_MethodName: CloseWindowInfoAuthor
         m_Mode: 1
         m_Arguments:

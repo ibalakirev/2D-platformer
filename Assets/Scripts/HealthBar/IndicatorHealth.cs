@@ -1,17 +1,27 @@
+using System.Collections;
 using UnityEngine;
 using UnityEngine.UI;
-using System.Collections;
 
 public class IndicatorHealth : MonoBehaviour
 {
-    [SerializeField] private Health _character;
+    [SerializeField] private Health _health;
     [SerializeField] private Slider _slider;
 
     private Coroutine _coroutineSlider;
 
-    public Health Character => _character;
+    private void OnEnable()
+    {
+        _health.CurrentValueReduce += ChangeValueIndicator;
+        _health.CurrentValueIncreas += ChangeValueIndicator;
+    }
 
-    protected void ChangeValueIndicator()
+    private void OnDisable()
+    {
+        _health.CurrentValueReduce -= ChangeValueIndicator;
+        _health.CurrentValueIncreas -= ChangeValueIndicator;
+    }
+
+    private void ChangeValueIndicator()
     {
         if (_coroutineSlider != null)
         {
@@ -40,6 +50,6 @@ public class IndicatorHealth : MonoBehaviour
 
     private float GetCurrentValueForSlider()
     {
-        return _character.CurrentValue / _character.MaxValue;
+        return _health.CurrentValue / _health.MaxValue;
     }
 }

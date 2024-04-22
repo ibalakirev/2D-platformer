@@ -1,6 +1,6 @@
 using UnityEngine;
 
-public class Death : MonoBehaviour
+public class DeactivatorCharacter : MonoBehaviour
 {
     [SerializeField] private Health _health;
 

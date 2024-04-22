@@ -44,7 +44,7 @@ public class PatrollerEnemy : MonoBehaviour
 
         _isFaicingRight = !_isFaicingRight;
 
-        _enemyModel.transform.Rotate(degreesRotationAxisX, degreesRotationAxisY, degreesRotationAxisZ);
+        _enemyModel.Rotate(degreesRotationAxisX, degreesRotationAxisY, degreesRotationAxisZ);
     }
 
     private bool GetPositionPointFinishDistance()

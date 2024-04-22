@@ -1,11 +1,16 @@
 using UnityEngine;
 
-public class OpenerInfoAuthor : MonoBehaviour
+public class SwitcherInfoAuthor : MonoBehaviour
 {
     [SerializeField] private GameObject _infoAuthor;
 
     public void OpenInfoAuthor()
     {
         _infoAuthor.SetActive(true);
+    }
+
+    public void CloseWindowInfoAuthor()
+    {
+        _infoAuthor.SetActive(false);
     }
 }

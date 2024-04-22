@@ -1,23 +1,16 @@
 using UnityEngine;
 
-public class AttackPlayer : MonoBehaviour
+public class AttackPlayer : Attacker
 {
     private const string AttackWeapon = nameof(AttackWeapon);
 
-    [SerializeField] private Animator _animator;
     [SerializeField] private Inputer _inputer;
+    [SerializeField] private Animator _animator;
+    [SerializeField] private AnimationEvents _eventsAttackAnimation;
     [SerializeField] SoundPlayerAttack _soundAttack;
+    
 
-    private float _damage;
     private bool _isAttack;
-
-    private void Start()
-    {
-        float minDamage = 20f;
-        float maxDamage = 50f;
-
-        _damage = Random.Range(minDamage, maxDamage);
-    }
 
     private void Update()
     {
@@ -31,15 +24,25 @@ public class AttackPlayer : MonoBehaviour
         }
     }
 
+    private void OnEnable()
+    {
+        _eventsAttackAnimation.AttackAnimationFinished += FinishAttack;
+    }
+
+    private void OnDisable()
+    {
+        _eventsAttackAnimation.AttackAnimationFinished -= FinishAttack;
+    }
+
     private void OnTriggerEnter2D(Collider2D other)
     {
-        if(other.TryGetComponent(out Health enemyHealth) && _isAttack == true)
+        if (other.TryGetComponent(out Health enemyHealth) && _isAttack == true)
         {
-            enemyHealth.ReduceCurrentValue(_damage);
+            enemyHealth.ReduceCurrentValue(Damage);
         }
     }
 
-    public void FinishAttack()
+    private void FinishAttack()
     {
         _isAttack = false;
     }

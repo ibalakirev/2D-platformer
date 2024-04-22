@@ -1,7 +1,7 @@
 using UnityEngine;
 using UnityEngine.SceneManagement;
 
-public class Scenes : MonoBehaviour
+public class SwitcherScenes : MonoBehaviour
 {
     private const string Level1 = nameof(Level1);
     private const string MainMenu = nameof(MainMenu);

@@ -18,6 +18,11 @@ public class AttackEnemy : MonoBehaviour
     {
         if (other.gameObject.TryGetComponent(out Health player))
         {
+            if (_coroutine != null)
+            {
+                StopCoroutine(_coroutine);
+            }
+
             _coroutine = StartCoroutine(WaitAttack(player));
         }
     }
@@ -38,7 +43,7 @@ public class AttackEnemy : MonoBehaviour
 
         while (enabled)
         {
-            player.ReduceHealth(_damage);
+            player.ReduceCurrentValue(_damage);
 
             yield return wait;
         }

@@ -1,62 +1,64 @@
+using System;
 using UnityEngine;
 
 public class Health : MonoBehaviour
 {
-    [SerializeField] private float _health;
+    [SerializeField] private float _currentValue;
+    [SerializeField] private float _minValue = 0f;
+    [SerializeField] private float _maxValue = 100f;
 
-    public float HealthCharacter => _health;
+    public event Action CurrentValueIncreas;
+    public event Action CurrentValueReduce;
+    public event Action DeathReport;
 
-    public void ReduceHealth(float damage)
+    public float CurrentValue => _currentValue;
+    public float MaxValue => _maxValue;
+    public bool IsLive => _currentValue > _minValue;
+
+    public void ReduceCurrentValue(float damage)
     {
-        if (IsAlive() == true)
+        float multiplierDamage = -1;
+        float damageValue = damage * multiplierDamage;
+
+        if (IsLive && IsIncomingValue(damage))
         {
-            _health -= damage;
+            ChangeCurrentValue(damageValue);
 
-            LimitHealth();
+            CurrentValueReduce?.Invoke();
 
-            TryDie();
+            TryDeath();
         }
     }
 
-    public void IncreaseHealth(float healthMedkit)
+    public void IncreaseCurrentValue(float healthMedkit)
     {
-        if (IsAlive() == true)
+        if (IsLive && IsIncomingValue(healthMedkit))
         {
-            _health += healthMedkit;
+            ChangeCurrentValue(healthMedkit);
 
-            LimitHealth();
+            CurrentValueIncreas?.Invoke();
         }
     }
 
-    private void TryDie()
+    private void ChangeCurrentValue(float valueIncoming)
     {
-        float minValueHealth = 0f;
+        _currentValue += valueIncoming;
 
-        if (_health <= minValueHealth)
-        {
-            gameObject.SetActive(false);
-        }
+        _currentValue = Mathf.Clamp(_currentValue, _minValue, _maxValue);
     }
 
-    private void LimitHealth()
+    private bool IsIncomingValue(float valueIncoming)
     {
-        float minValueHealth = 0f;
-        float maxValueHealth = 100f;
+        float minValueIncoming = 0f;
 
-        _health = Mathf.Clamp(_health, minValueHealth, maxValueHealth);
+        return valueIncoming > minValueIncoming;
     }
 
-    private bool IsAlive()
+    private void TryDeath()
     {
-        float minValueHealth = 0f;
-
-        if (_health > minValueHealth)
+        if (IsLive == false)
         {
-            return true;
-        }
-        else
-        {
-            return false;
+            DeathReport?.Invoke();
         }
     }
 }

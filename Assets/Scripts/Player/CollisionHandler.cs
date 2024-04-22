@@ -19,7 +19,7 @@ public class CollisionHandler : MonoBehaviour
     {
         if(other.gameObject.TryGetComponent(out Medkit medkit))
         {
-            _health.IncreaseHealth(medkit.HealthEffect);
+            _health.IncreaseCurrentValue(medkit.HealthEffect);
 
             medkit.Destroy();
         }
@@ -27,19 +27,6 @@ public class CollisionHandler : MonoBehaviour
         if (other.gameObject.TryGetComponent(out Coin coin))
         {
             coin.Destroy();
-        }
-
-        if (other.gameObject.TryGetComponent(out AttackEnemy enemy))
-        {
-            _soundTakeDamage.StartPlaySoundTakeDamage();
-        }
-    }
-
-    private void OnCollisionExit2D(Collision2D other)
-    {
-        if (other.gameObject.TryGetComponent(out AttackEnemy enemy))
-        {
-            _soundTakeDamage.StopPlaySoundTakeDamage();
         }
     }
 }

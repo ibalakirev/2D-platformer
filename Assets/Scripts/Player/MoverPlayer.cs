@@ -11,6 +11,7 @@ public class MoverPlayer : MonoBehaviour
     [SerializeField] private float _speedWalk;
     [SerializeField] private float _powerJump;
     [SerializeField] private Animator _animator;
+    [SerializeField] Transform _playerModel;
 
     private float _multiplySpeedWalk = 50f;
     private float _multiplyJump = 100f;
@@ -98,6 +99,6 @@ public class MoverPlayer : MonoBehaviour
 
         _isFaicingRight = !_isFaicingRight;
 
-        transform.Rotate(degreesRotationAxisX, degreesRotationAxisY, degreesRotationAxisZ);
+        _playerModel.transform.Rotate(degreesRotationAxisX, degreesRotationAxisY, degreesRotationAxisZ);
     }
 }

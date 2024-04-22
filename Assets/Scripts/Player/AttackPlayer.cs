@@ -35,7 +35,7 @@ public class AttackPlayer : MonoBehaviour
     {
         if(other.TryGetComponent(out Health enemyHealth) && _isAttack == true)
         {
-            enemyHealth.ReduceHealth(_damage);
+            enemyHealth.ReduceCurrentValue(_damage);
         }
     }
 

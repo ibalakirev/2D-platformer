@@ -1,38 +1,22 @@
-using System.Collections;
 using UnityEngine;
 
 public class SoundPlayerTakeDamage : MonoBehaviour
 {
     [SerializeField] private AudioSource _soundTakeDamage;
+    [SerializeField] private Health _player;
 
-    private Coroutine _coroutine;
-
-    public void StartPlaySoundTakeDamage()
+    private void OnEnable()
     {
-        _coroutine = StartCoroutine(WaitaPlaySoundTakeDamage());
+        _player.CurrentValueReduce += PlaySoundTakeDamage;
     }
 
-    public void StopPlaySoundTakeDamage()
+    private void OnDisable()
     {
-        StopCoroutine(_coroutine);  
+        _player.CurrentValueReduce -= PlaySoundTakeDamage;
     }
 
     private void PlaySoundTakeDamage()
     {
         _soundTakeDamage.Play();
-    }
-
-    private IEnumerator WaitaPlaySoundTakeDamage()
-    {
-        float delay = 2f;
-
-        WaitForSeconds wait = new WaitForSeconds(delay);
-
-        while (enabled)
-        {
-            PlaySoundTakeDamage();
-
-            yield return wait;
-        }
     }
 }

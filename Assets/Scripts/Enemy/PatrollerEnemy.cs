@@ -6,6 +6,7 @@ public class PatrollerEnemy : MonoBehaviour
 {
     [SerializeField] private float _speedPatrolEnemy;
     [SerializeField] private Transform[] _patrolPoints;
+    [SerializeField] Transform _enemyModel;
 
     private MoverEnemy _moverEnemy;
     private bool _isFaicingRight = true;
@@ -43,7 +44,7 @@ public class PatrollerEnemy : MonoBehaviour
 
         _isFaicingRight = !_isFaicingRight;
 
-        transform.Rotate(degreesRotationAxisX, degreesRotationAxisY, degreesRotationAxisZ);
+        _enemyModel.transform.Rotate(degreesRotationAxisX, degreesRotationAxisY, degreesRotationAxisZ);
     }
 
     private bool GetPositionPointFinishDistance()

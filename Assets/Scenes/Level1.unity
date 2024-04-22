@@ -3386,6 +3386,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _character: {fileID: 1992727374}
+  _slider: {fileID: 1211043992}
 --- !u!1 &1362566812
 GameObject:
   m_ObjectHideFlags: 0
@@ -3824,6 +3825,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _character: {fileID: 125692707}
+  _slider: {fileID: 1396064709}
 --- !u!1001 &1413938703
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -21922,6 +21924,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _character: {fileID: 1020375174}
+  _slider: {fileID: 2034603010}
 --- !u!1 &2037666615
 GameObject:
   m_ObjectHideFlags: 0

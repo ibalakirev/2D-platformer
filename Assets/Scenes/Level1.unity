@@ -864,7 +864,6 @@ GameObject:
   - component: {fileID: 288984551}
   - component: {fileID: 288984550}
   - component: {fileID: 288984554}
-  - component: {fileID: 288984555}
   m_Layer: 5
   m_Name: CanvasPauseMenu
   m_TagString: Untagged
@@ -967,21 +966,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 6b41a785002b50f4d9596840aaaa3e92, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _canvasGame: {fileID: 0}
-  _canvasPauseGame: {fileID: 0}
+  _canvasGame: {fileID: 806537609}
+  _canvasPauseGame: {fileID: 288984549}
   _player: {fileID: 125692699}
---- !u!114 &288984555
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 288984549}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 58727c967322bb34f8955b8134a5ef95, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
+  _buttonEnableStartGame: {fileID: 2001273005}
+  _buttonEnablePauseGame: {fileID: 1109214496}
 --- !u!1 &334509780
 GameObject:
   m_ObjectHideFlags: 0
@@ -2576,19 +2565,7 @@ MonoBehaviour:
   m_TargetGraphic: {fileID: 1009578467}
   m_OnClick:
     m_PersistentCalls:
-      m_Calls:
-      - m_Target: {fileID: 288984555}
-        m_TargetAssemblyTypeName: Scenes, Assembly-CSharp
-        m_MethodName: OpenMainMeu
-        m_Mode: 1
-        m_Arguments:
-          m_ObjectArgument: {fileID: 0}
-          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
-          m_IntArgument: 0
-          m_FloatArgument: 0
-          m_StringArgument: 
-          m_BoolArgument: 0
-        m_CallState: 2
+      m_Calls: []
 --- !u!114 &1009578467
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -2981,19 +2958,7 @@ MonoBehaviour:
   m_TargetGraphic: {fileID: 1109214497}
   m_OnClick:
     m_PersistentCalls:
-      m_Calls:
-      - m_Target: {fileID: 1531408782}
-        m_TargetAssemblyTypeName: SwicherTimeGame, Assembly-CSharp
-        m_MethodName: EnablePauseGame
-        m_Mode: 1
-        m_Arguments:
-          m_ObjectArgument: {fileID: 0}
-          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
-          m_IntArgument: 0
-          m_FloatArgument: 0
-          m_StringArgument: 
-          m_BoolArgument: 0
-        m_CallState: 2
+      m_Calls: []
 --- !u!114 &1109214497
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -3596,21 +3561,13 @@ PrefabInstance:
       value: 
       objectReference: {fileID: 125692705}
     - target: {fileID: 8276466867478140711, guid: 6d93543fc0049ef4eb52a229debd5466, type: 3}
-      propertyPath: maxDamage
-      value: 40
-      objectReference: {fileID: 0}
-    - target: {fileID: 8276466867478140711, guid: 6d93543fc0049ef4eb52a229debd5466, type: 3}
-      propertyPath: minDamage
-      value: 20
-      objectReference: {fileID: 0}
-    - target: {fileID: 8276466867478140711, guid: 6d93543fc0049ef4eb52a229debd5466, type: 3}
       propertyPath: _soundAttack
       value: 
       objectReference: {fileID: 50790155}
     - target: {fileID: 8276466867478140711, guid: 6d93543fc0049ef4eb52a229debd5466, type: 3}
       propertyPath: _eventsAttackAnimation
       value: 
-      objectReference: {fileID: 1824355063}
+      objectReference: {fileID: 1682817353}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
@@ -20496,8 +20453,8 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 1531408784}
-  - component: {fileID: 1531408783}
   - component: {fileID: 1531408782}
+  - component: {fileID: 1531408785}
   m_Layer: 0
   m_Name: CanvasesGame
   m_TagString: Untagged
@@ -20520,18 +20477,8 @@ MonoBehaviour:
   _canvasGame: {fileID: 806537609}
   _canvasPauseGame: {fileID: 288984549}
   _player: {fileID: 125692699}
---- !u!114 &1531408783
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1531408781}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 58727c967322bb34f8955b8134a5ef95, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
+  _buttonEnableStartGame: {fileID: 2001273005}
+  _buttonEnablePauseGame: {fileID: 1109214496}
 --- !u!4 &1531408784
 Transform:
   m_ObjectHideFlags: 0
@@ -20549,6 +20496,19 @@ Transform:
   - {fileID: 806537614}
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &1531408785
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1531408781}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 455249ee2a9e3cc49b4ce9c501e883b0, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _buttonOpenScene: {fileID: 1009578466}
 --- !u!1 &1559834491
 GameObject:
   m_ObjectHideFlags: 0
@@ -20753,6 +20713,17 @@ Animator:
   m_CorrespondingSourceObject: {fileID: 95000010530816694, guid: 6d93543fc0049ef4eb52a229debd5466, type: 3}
   m_PrefabInstance: {fileID: 1384436443}
   m_PrefabAsset: {fileID: 0}
+--- !u!114 &1682817353 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 1799887031667309147, guid: 6d93543fc0049ef4eb52a229debd5466, type: 3}
+  m_PrefabInstance: {fileID: 1384436443}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: bbe8ce98b7c943043add2870c28a96db, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &1742662524
 GameObject:
   m_ObjectHideFlags: 0
@@ -21064,17 +21035,6 @@ Canvas:
   m_SortingLayerID: 0
   m_SortingOrder: 0
   m_TargetDisplay: 0
---- !u!114 &1824355063 stripped
-MonoBehaviour:
-  m_CorrespondingSourceObject: {fileID: 3010395589549583267, guid: 6d93543fc0049ef4eb52a229debd5466, type: 3}
-  m_PrefabInstance: {fileID: 1384436443}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 0}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: bbe8ce98b7c943043add2870c28a96db, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
 --- !u!4 &1826026365 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 1873030402443433276, guid: 7791355459fe35e49936b5973aeb8a30, type: 3}
@@ -21764,19 +21724,7 @@ MonoBehaviour:
   m_TargetGraphic: {fileID: 2001273006}
   m_OnClick:
     m_PersistentCalls:
-      m_Calls:
-      - m_Target: {fileID: 1531408782}
-        m_TargetAssemblyTypeName: SwicherTimeGame, Assembly-CSharp
-        m_MethodName: EnableStartGame
-        m_Mode: 1
-        m_Arguments:
-          m_ObjectArgument: {fileID: 0}
-          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
-          m_IntArgument: 0
-          m_FloatArgument: 0
-          m_StringArgument: 
-          m_BoolArgument: 0
-        m_CallState: 2
+      m_Calls: []
 --- !u!114 &2001273006
 MonoBehaviour:
   m_ObjectHideFlags: 0

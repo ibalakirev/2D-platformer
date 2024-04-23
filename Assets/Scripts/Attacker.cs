@@ -6,9 +6,6 @@ public class Attacker : MonoBehaviour
     [SerializeField] float maxDamage;
 
     private float _damage;
-    private Health _character;
-
-    public Health Character => _character;
 
     public float Damage => _damage;
 

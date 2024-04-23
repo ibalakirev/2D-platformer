@@ -900,19 +900,7 @@ MonoBehaviour:
   m_TargetGraphic: {fileID: 600751517}
   m_OnClick:
     m_PersistentCalls:
-      m_Calls:
-      - m_Target: {fileID: 1007686604}
-        m_TargetAssemblyTypeName: SwitcherInfoAuthor, Assembly-CSharp
-        m_MethodName: OpenInfoAuthor
-        m_Mode: 1
-        m_Arguments:
-          m_ObjectArgument: {fileID: 0}
-          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
-          m_IntArgument: 0
-          m_FloatArgument: 0
-          m_StringArgument: 
-          m_BoolArgument: 0
-        m_CallState: 2
+      m_Calls: []
 --- !u!114 &600751517
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1055,19 +1043,7 @@ MonoBehaviour:
   m_TargetGraphic: {fileID: 835162576}
   m_OnClick:
     m_PersistentCalls:
-      m_Calls:
-      - m_Target: {fileID: 1007686597}
-        m_TargetAssemblyTypeName: Scenes, Assembly-CSharp
-        m_MethodName: OpenGame
-        m_Mode: 1
-        m_Arguments:
-          m_ObjectArgument: {fileID: 0}
-          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
-          m_IntArgument: 0
-          m_FloatArgument: 0
-          m_StringArgument: 
-          m_BoolArgument: 0
-        m_CallState: 2
+      m_Calls: []
 --- !u!114 &835162576
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1210,19 +1186,7 @@ MonoBehaviour:
   m_TargetGraphic: {fileID: 952009484}
   m_OnClick:
     m_PersistentCalls:
-      m_Calls:
-      - m_Target: {fileID: 1007686603}
-        m_TargetAssemblyTypeName: ExitGame, Assembly-CSharp
-        m_MethodName: Exit
-        m_Mode: 1
-        m_Arguments:
-          m_ObjectArgument: {fileID: 0}
-          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
-          m_IntArgument: 0
-          m_FloatArgument: 0
-          m_StringArgument: 
-          m_BoolArgument: 0
-        m_CallState: 2
+      m_Calls: []
 --- !u!114 &952009484
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1273,9 +1237,9 @@ GameObject:
   - component: {fileID: 1007686601}
   - component: {fileID: 1007686600}
   - component: {fileID: 1007686599}
-  - component: {fileID: 1007686597}
   - component: {fileID: 1007686603}
   - component: {fileID: 1007686604}
+  - component: {fileID: 1007686605}
   m_Layer: 5
   m_Name: CanvasMainMenu
   m_TagString: Untagged
@@ -1283,18 +1247,6 @@ GameObject:
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
   m_IsActive: 1
---- !u!114 &1007686597
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1007686595}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 58727c967322bb34f8955b8134a5ef95, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
 --- !u!114 &1007686599
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1390,6 +1342,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 57cef3c09b0f4fd49beec76e53510f52, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  _buttonExitGame: {fileID: 952009483}
 --- !u!114 &1007686604
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1403,7 +1356,21 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _infoAuthor: {fileID: 510803245}
-  _canvasMenu: {fileID: 1007686595}
+  _buttonOpenInfoAuthor: {fileID: 600751516}
+  _buttonCloseWindowInfoAuthor: {fileID: 1524877165}
+--- !u!114 &1007686605
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1007686595}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 26c43da756b41c44faa5923dd98dc089, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _buttonOpenScene: {fileID: 835162575}
 --- !u!1 &1335393681
 GameObject:
   m_ObjectHideFlags: 0
@@ -1653,19 +1620,7 @@ MonoBehaviour:
   m_TargetGraphic: {fileID: 1524877166}
   m_OnClick:
     m_PersistentCalls:
-      m_Calls:
-      - m_Target: {fileID: 1007686604}
-        m_TargetAssemblyTypeName: SwitcherInfoAuthor, Assembly-CSharp
-        m_MethodName: CloseWindowInfoAuthor
-        m_Mode: 1
-        m_Arguments:
-          m_ObjectArgument: {fileID: 0}
-          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
-          m_IntArgument: 0
-          m_FloatArgument: 0
-          m_StringArgument: 
-          m_BoolArgument: 0
-        m_CallState: 2
+      m_Calls: []
 --- !u!114 &1524877166
 MonoBehaviour:
   m_ObjectHideFlags: 0

@@ -678,11 +678,12 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 00d2241c0d8ffa941b389f153f1c02ee, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _animator: {fileID: 95000010530816694}
+  minDamage: 20
+  maxDamage: 40
   _inputer: {fileID: 0}
-  _soundAttack: {fileID: 0}
+  _animator: {fileID: 95000010530816694}
   _eventsAttackAnimation: {fileID: 0}
-  _isAttack: 0
+  _soundAttack: {fileID: 0}
 --- !u!1 &1000011181302222
 GameObject:
   m_ObjectHideFlags: 0
@@ -1530,7 +1531,7 @@ GameObject:
   m_Component:
   - component: {fileID: 4000010470550876}
   - component: {fileID: 95000010530816694}
-  - component: {fileID: 3010395589549583267}
+  - component: {fileID: 1799887031667309147}
   m_Layer: 3
   m_Name: Player
   m_TagString: Untagged
@@ -1575,7 +1576,7 @@ Animator:
   m_AllowConstantClipSamplingOptimization: 1
   m_KeepAnimatorStateOnDisable: 0
   m_WriteDefaultValuesOnDisable: 0
---- !u!114 &3010395589549583267
+--- !u!114 &1799887031667309147
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}

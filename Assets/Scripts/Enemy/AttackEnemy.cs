@@ -7,26 +7,26 @@ public class AttackEnemy : Attacker
 
     private void OnCollisionEnter2D(Collision2D other)
     {
-        if (other.gameObject.TryGetComponent(out Health player))
+        if (other.gameObject.TryGetComponent(out Health healthPlayer))
         {
             if (_coroutine != null)
             {
                 StopCoroutine(_coroutine);
             }
 
-            _coroutine = StartCoroutine(WaitAttack(player));
+            _coroutine = StartCoroutine(WaitAttack(healthPlayer));
         }
     }
 
     private void OnCollisionExit2D(Collision2D other)
     {
-        if (other.gameObject.TryGetComponent(out Health player))
+        if (other.gameObject.TryGetComponent(out Health healthPlayer))
         {
             StopCoroutine(_coroutine);
         }
     }
 
-    private IEnumerator WaitAttack(Health player)
+    private IEnumerator WaitAttack(Health healthPlayer)
     {
         float delay = 2f;
 
@@ -34,7 +34,7 @@ public class AttackEnemy : Attacker
 
         while (gameObject.activeSelf)
         {
-            player.ReduceCurrentValue(Damage);
+            healthPlayer.ReduceCurrentValue(Damage);
 
             yield return timeWait;
         }

@@ -1,26 +1,19 @@
 using UnityEngine;
-using UnityEngine.SceneManagement;
+using UnityEngine.UI;
 
-public class SwitcherScenes : MonoBehaviour
+public abstract class SwitcherScenes : MonoBehaviour
 {
-    private const string Level1 = nameof(Level1);
-    private const string MainMenu = nameof(MainMenu);
+    [SerializeField] private Button _buttonOpenScene;
 
-    public void OpenGame()
+    private void OnEnable()
     {
-        float maxValueTime = 1f;
-
-        SceneManager.LoadScene(Level1);
-
-        Time.timeScale = maxValueTime;
+        _buttonOpenScene?.onClick.AddListener(OpenScene);
     }
 
-    public void OpenMainMeu()
+    private void OnDisable()
     {
-        float maxValueTime = 1f;
-
-        Time.timeScale = maxValueTime;
-
-        SceneManager.LoadScene(MainMenu);
+        _buttonOpenScene?.onClick.RemoveListener(OpenScene);
     }
+
+    protected abstract void OpenScene();
 }

@@ -1,7 +1,7 @@
 using System;
 using UnityEngine;
 
-[RequireComponent(typeof(Rigidbody2D), typeof(Inputer))]
+[RequireComponent(typeof(Rigidbody2D), typeof(InputReader))]
 
 public class MoverPlayer : MonoBehaviour
 {
@@ -19,7 +19,7 @@ public class MoverPlayer : MonoBehaviour
     private bool _isGround = false;
     private bool _isJump = false;
 
-    private Inputer _inputer;
+    private InputReader _inputer;
     private Rigidbody2D _rigidbody;
 
     public event Action SoundJumpStarted;
@@ -27,7 +27,7 @@ public class MoverPlayer : MonoBehaviour
     private void Start()
     {
         _rigidbody = GetComponent<Rigidbody2D>();
-        _inputer = GetComponent<Inputer>();
+        _inputer = GetComponent<InputReader>();
     }
 
     private void FixedUpdate()

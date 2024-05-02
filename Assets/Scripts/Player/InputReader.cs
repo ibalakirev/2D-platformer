@@ -1,6 +1,6 @@
 using UnityEngine;
 
-public class Inputer : MonoBehaviour
+public class InputReader : MonoBehaviour
 {
     private const string Horizontal = nameof(Horizontal);
 
@@ -21,5 +21,10 @@ public class Inputer : MonoBehaviour
     public bool GetInputAttack()
     {
         return Input.GetMouseButtonDown(0);
+    }
+
+    public bool GetInputVampirismSkill()
+    {
+        return Input.GetKeyDown(KeyCode.R);
     }
 }

@@ -1367,10 +1367,11 @@ MonoBehaviour:
   m_GameObject: {fileID: 1007686595}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 26c43da756b41c44faa5923dd98dc089, type: 3}
+  m_Script: {fileID: 11500000, guid: 58727c967322bb34f8955b8134a5ef95, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
   _buttonOpenScene: {fileID: 835162575}
+  _nameScene: Level1
 --- !u!1 &1335393681
 GameObject:
   m_ObjectHideFlags: 0

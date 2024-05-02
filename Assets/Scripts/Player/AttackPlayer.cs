@@ -4,7 +4,7 @@ public class AttackPlayer : Attacker
 {
     private const string AttackWeapon = nameof(AttackWeapon);
 
-    [SerializeField] private Inputer _inputer;
+    [SerializeField] private InputReader _inputer;
     [SerializeField] private Animator _animator;
     [SerializeField] private AnimationEvents _eventsAttackAnimation;
     [SerializeField] SoundPlayerAttack _soundAttack;

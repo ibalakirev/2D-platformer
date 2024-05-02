@@ -1,9 +1,11 @@
 using UnityEngine;
 using UnityEngine.UI;
+using UnityEngine.SceneManagement;
 
-public abstract class SwitcherScenes : MonoBehaviour
+public class SwitcherScenes : MonoBehaviour
 {
     [SerializeField] private Button _buttonOpenScene;
+    [SerializeField] private string _nameScene;
 
     private void OnEnable()
     {
@@ -15,5 +17,12 @@ public abstract class SwitcherScenes : MonoBehaviour
         _buttonOpenScene?.onClick.RemoveListener(OpenScene);
     }
 
-    protected abstract void OpenScene();
+    protected void OpenScene()
+    {
+        float maxValueTime = 1f;
+
+        Time.timeScale = maxValueTime;
+
+        SceneManager.LoadScene(_nameScene);
+    }
 }

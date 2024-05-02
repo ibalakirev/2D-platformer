@@ -1,6 +1,6 @@
 using UnityEngine;
 
-[RequireComponent (typeof(InputReader))]
+[RequireComponent(typeof(InputReader))]
 
 public abstract class PlayerSkills : MonoBehaviour
 {
@@ -8,15 +8,15 @@ public abstract class PlayerSkills : MonoBehaviour
 
     public InputReader InputReader => _inputReader;
 
-    void Update()
+    private void Update()
     {
-        if (SetInput())
+        if (SetInputUseSkill())
         {
             UseSkill();
         }
     }
 
-    protected abstract bool SetInput();
+    protected abstract bool SetInputUseSkill();
 
     protected abstract void UseSkill();
 }

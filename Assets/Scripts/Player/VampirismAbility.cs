@@ -1,7 +1,5 @@
 using System;
 using System.Collections;
-using System.Collections.Generic;
-using System.Linq;
 using UnityEngine;
 
 [RequireComponent(typeof(Health))]
@@ -9,19 +7,22 @@ using UnityEngine;
 public class VampirismAbility : PlayerSkills
 {
     [SerializeField] private LayerMask _enemiesLayer;
-    [SerializeField] private GameObject _skillImage;
     [SerializeField] private float _skillRadius = 5f;
-    [SerializeField] private float _skillDamage = 20f;
+    [SerializeField] private float _skillDamage = 30f;
     [SerializeField] private int _duractionSkill = 6;
 
-    private int _counterDurationSkill;
+    private int _currentValueCooldown;
+    private float _currentSkillDamage;
     private Health _health;
-    private Coroutine _coroutine;
+    private Coroutine _coroutineCooldown;
+    private Coroutine _coroutineStealHealth;
 
-    public event Action SkillEnabled;
-    public event Action SkillDisabled;
+    public event Action CooldownIterated;
+    public event Action CooldownDisabled;
+    public event Action StealHealthIterated;
+    public event Action StealHealthDisabled;
 
-    public int CounterDurationSkill => _counterDurationSkill;
+    public int CurrentValueCooldown => _currentValueCooldown;
 
     private void Start()
     {
@@ -34,82 +35,122 @@ public class VampirismAbility : PlayerSkills
         Gizmos.DrawWireSphere(transform.position, _skillRadius);
     }
 
-    protected override bool SetInputUseSkill()
+    protected override bool GetInputUseSkill()
     {
         return InputReader.GetInputVampirismSkill();
     }
 
     protected override void UseSkill()
     {
-        if (_coroutine != null)
+        if (_coroutineCooldown == null && _coroutineStealHealth == null)
         {
-            StopCoroutine(_coroutine);
+            _coroutineStealHealth = StartCoroutine(StealHealth());
         }
-
-        _coroutine = StartCoroutine(StealHealth());
     }
 
     private IEnumerator StealHealth()
     {
         float delay = 1f;
-        float vampirismDamageValue = _skillDamage;
         float distanceEnemy;
-
-        ResetCounterTimeSkill();
+        float maxDistance = 100f;
+        Collider2D enemy = new Collider2D();
 
         WaitForSeconds timeWait = new WaitForSeconds(delay);
 
         for (int i = 0; i < _duractionSkill; i++)
         {
+            StealHealthIterated?.Invoke();
+
             Collider2D[] enemies = Physics2D.OverlapCircleAll(transform.position, _skillRadius, _enemiesLayer);
-            Dictionary<Collider2D, float> distanceEnemies = new Dictionary<Collider2D, float>();
-
-            SkillEnabled?.Invoke();
-
-            --_counterDurationSkill;
 
             if (enemies.Length > 0)
             {
                 for (int j = 0; j < enemies.Length; j++)
                 {
                     distanceEnemy = Vector2.Distance(transform.position, enemies[j].transform.position);
-                    distanceEnemies.Add(enemies[j], distanceEnemy);
-                }
 
-                float minDistance = distanceEnemies.Values.Min();
-                var targetEnemies = distanceEnemies.Where(enemy => enemy.Value == minDistance);
-
-                foreach (var enemy in targetEnemies)
-                {
-                    if (enemy.Key.TryGetComponent<Health>(out var enemyHealth))
+                    if (distanceEnemy < maxDistance)
                     {
-                        if (enemyHealth.CurrentValue < _skillDamage)
-                        {
-                            vampirismDamageValue = enemyHealth.CurrentValue;
-                        }
+                        maxDistance = distanceEnemy;
 
-                        if (enemyHealth.CurrentValue > 0)
-                        {
-                            enemyHealth.ReduceCurrentValue(vampirismDamageValue);
-
-                            _health.IncreaseCurrentValue(vampirismDamageValue);
-                        }
+                        enemy = enemies[j];
                     }
                 }
 
-                vampirismDamageValue = _skillDamage;
+                StealHealthNearestEnemy(enemy);
             }
 
             yield return timeWait;
         }
 
-        ResetCounterTimeSkill();
+        _coroutineCooldown = StartCoroutine(Cooldown());
 
-        SkillDisabled?.Invoke();
+        StopCurrentCorourine(ref _coroutineStealHealth);
+
+        StealHealthDisabled?.Invoke();
     }
 
-    private void ResetCounterTimeSkill()
+    private IEnumerator Cooldown()
     {
-        _counterDurationSkill = _duractionSkill;
+        float delay = 1f;
+        int timeCooldown = 5;
+
+        ResetCooldown(timeCooldown);
+
+        WaitForSeconds timeWait = new WaitForSeconds(delay);
+
+        for (int i = 0; i < timeCooldown; i++)
+        {
+            --_currentValueCooldown;
+
+            CooldownIterated?.Invoke();
+
+            yield return timeWait;
+        }
+
+        StopCurrentCorourine(ref _coroutineCooldown);
+
+        ResetCooldown(timeCooldown);
+
+        CooldownDisabled?.Invoke();
+    }
+
+    private void StealHealthNearestEnemy(Collider2D enemy)
+    {
+        ResetCurrentSkillDamage();
+
+        if (enemy.TryGetComponent<Health>(out var enemyHealth))
+        {
+            if (enemyHealth.CurrentValue < _skillDamage)
+            {
+                _currentSkillDamage = enemyHealth.CurrentValue;
+            }
+
+            enemyHealth.ReduceCurrentValue(_currentSkillDamage);
+
+            _health.IncreaseCurrentValue(_currentSkillDamage);
+
+            ResetCurrentSkillDamage();
+        }
+    }
+
+    private void ResetCurrentSkillDamage()
+    {
+        _currentSkillDamage = _skillDamage;
+    }
+
+    private void ResetCooldown(int maxValueCooldown)
+    {
+        _currentValueCooldown = maxValueCooldown;
+    }
+
+    private void StopCurrentCorourine(ref Coroutine coroutine)
+    {
+        if (coroutine != null)
+        {
+            StopCoroutine(coroutine);
+
+            coroutine = null;
+        }
     }
 }

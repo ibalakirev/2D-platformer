@@ -8,16 +8,16 @@ public class CounterUseVampirism : MonoBehaviour
 
     private void OnEnable()
     {
-        _vampirismSkill.SkillEnabled += ChangeValueIndicator;
+        _vampirismSkill.CooldownIterated += ChangeValueIndicator;
     }
 
     private void OnDisable()
     {
-        _vampirismSkill.SkillEnabled -= ChangeValueIndicator;
+        _vampirismSkill.CooldownIterated -= ChangeValueIndicator;
     }
 
     private void ChangeValueIndicator()
     {
-        _indicator.text = $"{_vampirismSkill.CounterDurationSkill}";
+        _indicator.text = $"{_vampirismSkill.CurrentValueCooldown}";
     }
 }

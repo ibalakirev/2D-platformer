@@ -6,17 +6,17 @@ public abstract class PlayerSkills : MonoBehaviour
 {
     [SerializeField] private InputReader _inputReader;
 
-    public InputReader InputReader => _inputReader;
+    protected InputReader InputReader => _inputReader;
 
     private void Update()
     {
-        if (SetInputUseSkill())
+        if (GetInputUseSkill())
         {
             UseSkill();
         }
     }
 
-    protected abstract bool SetInputUseSkill();
+    protected abstract bool GetInputUseSkill();
 
     protected abstract void UseSkill();
 }

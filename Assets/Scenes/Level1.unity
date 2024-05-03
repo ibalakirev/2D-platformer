@@ -682,7 +682,6 @@ MonoBehaviour:
   _enemiesLayer:
     serializedVersion: 2
     m_Bits: 512
-  _skillImage: {fileID: 1875342522}
   _skillRadius: 5
   _skillDamage: 20
   _duractionSkill: 6
@@ -699,8 +698,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _vampirismAbility: {fileID: 125692710}
-  _timeIndicatorAbility: {fileID: 545078927}
-  _imageAbility: {fileID: 1875342522}
+  _timeIndicatorAbility: {fileID: 545078931}
+  _imageAbility: {fileID: 1875342524}
 --- !u!1 &134014437
 GameObject:
   m_ObjectHideFlags: 0
@@ -1080,9 +1079,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 6b41a785002b50f4d9596840aaaa3e92, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _canvasGame: {fileID: 806537609}
-  _canvasPauseGame: {fileID: 288984549}
-  _player: {fileID: 125692699}
+  _canvasGame: {fileID: 806537613}
+  _canvasPauseGame: {fileID: 288984552}
+  _player: {fileID: 125692707}
   _buttonEnableStartGame: {fileID: 2001273005}
   _buttonEnablePauseGame: {fileID: 1109214496}
 --- !u!4 &296924561 stripped
@@ -21105,9 +21104,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 6b41a785002b50f4d9596840aaaa3e92, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _canvasGame: {fileID: 806537609}
-  _canvasPauseGame: {fileID: 288984549}
-  _player: {fileID: 125692699}
+  _canvasGame: {fileID: 806537613}
+  _canvasPauseGame: {fileID: 288984552}
+  _player: {fileID: 125692707}
   _buttonEnableStartGame: {fileID: 2001273005}
   _buttonEnablePauseGame: {fileID: 1109214496}
 --- !u!4 &1531408784

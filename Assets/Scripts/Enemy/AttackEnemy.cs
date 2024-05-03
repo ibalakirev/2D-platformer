@@ -7,7 +7,7 @@ public class AttackEnemy : Attacker
 
     private void OnCollisionEnter2D(Collision2D other)
     {
-        if (other.gameObject.TryGetComponent(out Health healthPlayer))
+        if (other.gameObject.TryGetComponent(out Health healthPlayer) && IsGameObjectActive())
         {
             if (_coroutine != null)
             {
@@ -20,7 +20,7 @@ public class AttackEnemy : Attacker
 
     private void OnCollisionExit2D(Collision2D other)
     {
-        if (other.gameObject.TryGetComponent(out Health healthPlayer))
+        if (other.gameObject.TryGetComponent(out Health healthPlayer) && IsGameObjectActive())
         {
             StopCoroutine(_coroutine);
         }
@@ -38,5 +38,10 @@ public class AttackEnemy : Attacker
 
             yield return timeWait;
         }
+    }
+
+    private bool IsGameObjectActive()
+    {
+        return gameObject.activeSelf;
     }
 }

@@ -3,9 +3,9 @@ using UnityEngine.UI;
 
 public class SwitcherTimeGame : MonoBehaviour
 {
-    [SerializeField] private GameObject _canvasGame;
-    [SerializeField] private GameObject _canvasPauseGame;
-    [SerializeField] private GameObject _player;
+    [SerializeField] private Canvas _canvasGame;
+    [SerializeField] private Canvas _canvasPauseGame;
+    [SerializeField] private Health _player;
     [SerializeField] private Button _buttonEnableStartGame;
     [SerializeField] private Button _buttonEnablePauseGame;
 
@@ -25,9 +25,9 @@ public class SwitcherTimeGame : MonoBehaviour
     {
         float maxValueTime = 1f;
 
-        _canvasPauseGame.SetActive(false);
-        _canvasGame.SetActive(true);
-        _player.SetActive(true);
+        _canvasPauseGame.gameObject.SetActive(false);
+        _canvasGame.gameObject.SetActive(true);
+        _player.gameObject.SetActive(true);
 
         ChangeTime(maxValueTime);
     }
@@ -36,9 +36,9 @@ public class SwitcherTimeGame : MonoBehaviour
     {
         float minValueTime = 0f;
 
-        _canvasGame.SetActive(false);
-        _player.SetActive(false);
-        _canvasPauseGame.SetActive(true);
+        _canvasGame.gameObject.SetActive(false);
+        _player.gameObject.SetActive(false);
+        _canvasPauseGame.gameObject.SetActive(true);
 
         ChangeTime(minValueTime);
     }

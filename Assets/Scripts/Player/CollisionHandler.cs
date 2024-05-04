@@ -1,32 +1,27 @@
+using System;
 using UnityEngine;
-
-[RequireComponent (typeof(Health))]
 
 public class CollisionHandler : MonoBehaviour
 {
-    [SerializeField] private Medkit _medkit;
-    [SerializeField] private Coin _coin;
-    [SerializeField] private SoundPlayerTakeDamage _soundTakeDamage;
+    private Medkit _medkit;
+    private Coin _coin;
 
-    private Health _health;
+    public event Action MedkitFound;
+    public event Action CoinFound;
 
-    private void Start()
-    {
-        _health = GetComponent<Health>();
-    }
+    public Medkit Medkit => _medkit;
+    public Coin Coin => _coin;
 
     private void OnCollisionEnter2D(Collision2D other)
     {
-        if(other.gameObject.TryGetComponent(out Medkit medkit))
+        if (other.gameObject.TryGetComponent(out _medkit))
         {
-            _health.IncreaseCurrentValue(medkit.HealthEffect);
-
-            medkit.Destroy();
+            MedkitFound?.Invoke();
         }
 
-        if (other.gameObject.TryGetComponent(out Coin coin))
+        if (other.gameObject.TryGetComponent(out _coin))
         {
-            coin.Destroy();
+            CoinFound?.Invoke();
         }
     }
 }

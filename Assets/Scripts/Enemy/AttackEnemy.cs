@@ -7,14 +7,17 @@ public class AttackEnemy : Attacker
 
     private void OnCollisionEnter2D(Collision2D other)
     {
-        if (other.gameObject.TryGetComponent(out Health healthPlayer) && IsGameObjectActive())
+        if (other.gameObject.TryGetComponent(out Health healthPlayer))
         {
             if (_coroutine != null)
             {
                 StopCoroutine(_coroutine);
             }
 
-            _coroutine = StartCoroutine(WaitAttack(healthPlayer));
+            if (IsGameObjectActive())
+            {
+                _coroutine = StartCoroutine(WaitAttack(healthPlayer));
+            }    
         }
     }
 

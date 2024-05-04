@@ -7,7 +7,7 @@ public class AttackPlayer : Attacker
     [SerializeField] private InputReader _inputer;
     [SerializeField] private Animator _animator;
     [SerializeField] private AnimationEvents _eventsAttackAnimation;
-    [SerializeField] SoundPlayerAttack _soundAttack;
+    [SerializeField] private SoundPlayerAttack _soundAttack;
     
 
     private bool _isAttack;

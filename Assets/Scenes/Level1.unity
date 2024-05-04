@@ -508,6 +508,7 @@ GameObject:
   - component: {fileID: 125692709}
   - component: {fileID: 125692710}
   - component: {fileID: 125692711}
+  - component: {fileID: 125692712}
   m_Layer: 3
   m_Name: Player
   m_TagString: Player
@@ -650,9 +651,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: a75f1da96fcc7de4fb76b831d21f972d, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _medkit: {fileID: -3208576998357909024, guid: 4c8e8318f9d630b4983f6640d84a2157, type: 3}
-  _coin: {fileID: 1344257621972843579, guid: 010a6f47c8d6fb948b2817bca16fffd6, type: 3}
-  _soundTakeDamage: {fileID: 719664928}
 --- !u!114 &125692709
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -700,6 +698,20 @@ MonoBehaviour:
   _vampirismAbility: {fileID: 125692710}
   _timeIndicatorAbility: {fileID: 545078931}
   _imageAbility: {fileID: 1875342524}
+--- !u!114 &125692712
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 125692699}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: c36f36584169d2f4eacc55b4790d1fdb, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _collisionHandler: {fileID: 125692708}
+  _health: {fileID: 125692707}
 --- !u!1 &134014437
 GameObject:
   m_ObjectHideFlags: 0
@@ -3904,6 +3916,7 @@ GameObject:
   m_Component:
   - component: {fileID: 1362566815}
   - component: {fileID: 1362566813}
+  - component: {fileID: 1362566816}
   m_Layer: 0
   m_Name: SoundCoin
   m_TagString: Untagged
@@ -4022,6 +4035,20 @@ Transform:
   m_Children: []
   m_Father: {fileID: 1384118704}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &1362566816
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1362566812}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: fe93298b41bdd8c45a110453511f6ab1, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _sound: {fileID: 1362566813}
+  _collisionHandler: {fileID: 125692708}
 --- !u!1 &1384118703
 GameObject:
   m_ObjectHideFlags: 0
@@ -21416,6 +21443,7 @@ GameObject:
   m_Component:
   - component: {fileID: 1742662525}
   - component: {fileID: 1742662527}
+  - component: {fileID: 1742662528}
   m_Layer: 0
   m_Name: SoundMedkit
   m_TagString: Untagged
@@ -21534,6 +21562,20 @@ AudioSource:
     m_PreInfinity: 2
     m_PostInfinity: 2
     m_RotationOrder: 4
+--- !u!114 &1742662528
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1742662524}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: de21df6c60276184e90b8ac4c52c0446, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _sound: {fileID: 1742662527}
+  _collisionHandler: {fileID: 125692708}
 --- !u!1 &1778321763
 GameObject:
   m_ObjectHideFlags: 0

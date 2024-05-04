@@ -3,7 +3,6 @@ using UnityEngine.UI;
 
 public class ExitGame : MonoBehaviour
 {
-
     [SerializeField] private Button _buttonExitGame;
 
     private void OnEnable()

@@ -7,12 +7,12 @@ public class SoundPlayerTakeDamage : MonoBehaviour
 
     private void OnEnable()
     {
-        _player.CurrentValueReduce += PlaySoundTakeDamage;
+        _player.CurrentValueReduced += PlaySoundTakeDamage;
     }
 
     private void OnDisable()
     {
-        _player.CurrentValueReduce -= PlaySoundTakeDamage;
+        _player.CurrentValueReduced -= PlaySoundTakeDamage;
     }
 
     private void PlaySoundTakeDamage()

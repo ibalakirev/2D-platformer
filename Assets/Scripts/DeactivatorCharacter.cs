@@ -6,12 +6,12 @@ public class DeactivatorCharacter : MonoBehaviour
 
     private void OnEnable()
     {
-        _health.DeathReport += Slay;
+        _health.DeathReported += Slay;
     }
 
     private void OnDisable()
     {
-        _health.DeathReport -= Slay;
+        _health.DeathReported -= Slay;
     }
 
     private void Slay()

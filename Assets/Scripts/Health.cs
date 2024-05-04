@@ -7,9 +7,9 @@ public class Health : MonoBehaviour
     [SerializeField] private float _minValue = 0f;
     [SerializeField] private float _maxValue = 100f;
 
-    public event Action CurrentValueIncreas;
-    public event Action CurrentValueReduce;
-    public event Action DeathReport;
+    public event Action CurrentValueIncreased;
+    public event Action CurrentValueReduced;
+    public event Action DeathReported;
 
     public float CurrentValue => _currentValue;
     public float MaxValue => _maxValue;
@@ -24,9 +24,9 @@ public class Health : MonoBehaviour
         {
             ChangeCurrentValue(damageValue);
 
-            CurrentValueReduce?.Invoke();
+            CurrentValueReduced?.Invoke();
 
-            TryDeath();
+            TryDie();
         }
     }
 
@@ -36,7 +36,7 @@ public class Health : MonoBehaviour
         {
             ChangeCurrentValue(healthMedkit);
 
-            CurrentValueIncreas?.Invoke();
+            CurrentValueIncreased?.Invoke();
         }
     }
 
@@ -54,11 +54,11 @@ public class Health : MonoBehaviour
         return valueIncoming > minValueIncoming;
     }
 
-    private void TryDeath()
+    private void TryDie()
     {
         if (IsLive == false)
         {
-            DeathReport?.Invoke();
+            DeathReported?.Invoke();
         }
     }
 }

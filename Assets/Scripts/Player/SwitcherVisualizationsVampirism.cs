@@ -1,6 +1,6 @@
 using UnityEngine;
 
-public class SwitcherObjectsVampirism : MonoBehaviour
+public class SwitcherVisualizationsVampirism : MonoBehaviour
 {
     [SerializeField] private VampirismAbility _vampirismAbility;
     [SerializeField] private Canvas _timeIndicatorAbility;

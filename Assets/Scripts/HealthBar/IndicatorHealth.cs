@@ -11,14 +11,14 @@ public class IndicatorHealth : MonoBehaviour
 
     private void OnEnable()
     {
-        _health.CurrentValueReduce += ChangeValueIndicator;
-        _health.CurrentValueIncreas += ChangeValueIndicator;
+        _health.CurrentValueReduced += ChangeValueIndicator;
+        _health.CurrentValueIncreased += ChangeValueIndicator;
     }
 
     private void OnDisable()
     {
-        _health.CurrentValueReduce -= ChangeValueIndicator;
-        _health.CurrentValueIncreas -= ChangeValueIndicator;
+        _health.CurrentValueReduced -= ChangeValueIndicator;
+        _health.CurrentValueIncreased -= ChangeValueIndicator;
     }
 
     private void ChangeValueIndicator()

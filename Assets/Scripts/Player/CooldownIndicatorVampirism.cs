@@ -1,7 +1,7 @@
 using TMPro;
 using UnityEngine;
 
-public class CounterUseVampirism : MonoBehaviour
+public class CooldownIndicatorVampirism : MonoBehaviour
 {
     [SerializeField] private VampirismAbility _vampirismSkill;
     [SerializeField] private TextMeshProUGUI _indicator;
